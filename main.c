@@ -2,18 +2,50 @@
 #include <stdlib.h>
 #include <time.h>
 
-int main()
+int chooseLevel()
 {
-    const int MAX = 100, MIN = 1;
-    int mysteryNumber = 0, answer = 0, count = 0, newGame = 1;
-
-    srand(time(NULL)); // Initiate a random number generator 
-    mysteryNumber = (rand() % (MAX - MIN + 1)) + MIN; // Get the random value
+    int number = 0;
 
     do
     {
+        printf("At which level will you play ?\n");
+        printf("===1===\nBetween 1 and 100\n");
+        printf("===2===\nBetween 1 and 1000\n");
+        printf("===3===\nBetween 1 and 10000\n");
+        scanf("%d", &number);
+    } while (number < 1 || number > 3);
+    
+    return number;
+}
+
+int main(int argc, char** argv)
+{
+    srand(time(NULL)); // Initiate a random number generator 
+    const int MIN = 1;
+    int max = 0, mysteryNumber = 0, answer = 0, newGame = 1;
+
+    switch (chooseLevel())
+    {
+    case 1:
+        max = 100;
+        break;
+    case 2:
+        max = 1000;
+        break;
+    case 3:
+        max = 10000;
+        break;
+    default:
+        break;
+    }
+
+    do
+    {
+        int count = 0;
+        mysteryNumber = (rand() % (max - MIN + 1)) + MIN; // Get the random value
+
         printf("Welcome into my first game. \n");
-        printf("You'll have to find a random number between 1 and 100\n");
+        printf("You'll have to find a random number between 1 and %d\n", max);
         
         do
         {
@@ -24,10 +56,12 @@ int main()
                 if (mysteryNumber < answer)
                 {
                     printf("It's less !\n\n");
+                    printf("Cheat code = %d", mysteryNumber);
                 }
                 else
                 {
                     printf("It's more !\n\n");
+                    printf("Cheat code = %d", mysteryNumber);
                 }
             }
             
