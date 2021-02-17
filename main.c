@@ -56,12 +56,12 @@ int main(int argc, char** argv)
                 if (mysteryNumber < answer)
                 {
                     printf("It's less !\n\n");
-                    printf("Cheat code = %d", mysteryNumber);
+                    // printf("Cheat code = %d", mysteryNumber);
                 }
                 else
                 {
                     printf("It's more !\n\n");
-                    printf("Cheat code = %d", mysteryNumber);
+                    // printf("Cheat code = %d", mysteryNumber);
                 }
             }
             
